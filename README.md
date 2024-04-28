@@ -7,7 +7,7 @@ Use only at your own discretion.
 - no lua (this accidentally killed blammed lights too but Eh)
 - no note splashes
 - hscript support (Funkin-Multikey)
-- schmovin support
+- schmovin support (shoutouts to SanicBTW's Funkin-Schmovin)
 - stage code separated from PlayState.hx (FPS Plus)
 - organized assets (inspired by FPS Plus)
 
