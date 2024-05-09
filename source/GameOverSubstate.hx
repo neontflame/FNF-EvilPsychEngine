@@ -50,15 +50,15 @@ class GameOverSubstate extends MusicBeatSubstate
 		Conductor.changeBPM(100);
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
-		FlxG.camera.scroll.set();
-		FlxG.camera.target = null;
+		// lePlayState.realGameCam.scroll.set();
+		lePlayState.realGameCam.target = null;
 
 		bf.playAnim('firstDeath');
 
 		var exclude:Array<Int> = [];
 
 		camFollowPos = new FlxObject(0, 0, 1, 1);
-		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
+		camFollowPos.setPosition(lePlayState.realGameCam.scroll.x + (lePlayState.realGameCam.width / 2), lePlayState.realGameCam.scroll.y + (lePlayState.realGameCam.height / 2));
 		add(camFollowPos);
 	}
 
@@ -95,7 +95,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			if (bf.animation.curAnim.curFrame == 12)
 			{
-				FlxG.camera.follow(camFollowPos, LOCKON, 1);
+				lePlayState.realGameCam.follow(camFollowPos, LOCKON, 1);
 				updateCamera = true;
 			}
 
@@ -136,7 +136,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.play(Paths.music(endSoundName));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
+				lePlayState.realGameCam.fade(FlxColor.BLACK, 2, false, function()
 				{
 					MusicBeatState.resetState();
 				});

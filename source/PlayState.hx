@@ -986,9 +986,6 @@ class PlayState extends MusicBeatState
 	var startTimer:FlxTimer;
 	var finishTimer:FlxTimer = null;
 
-	// For being able to mess with the sprites on Lua
-	public var countDownSprites:Array<FlxSprite> = [];
-
 	public function startCountdown():Void
 	{
 		inCutscene = false;
@@ -1064,12 +1061,10 @@ class PlayState extends MusicBeatState
 					ready.screenCenter();
 					ready.antialiasing = antialias;
 					add(ready);
-					countDownSprites.push(ready);
 					FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
 						ease: FlxEase.cubeInOut,
 						onComplete: function(twn:FlxTween)
 						{
-							countDownSprites.remove(ready);
 							remove(ready);
 							ready.destroy();
 						}
@@ -1085,12 +1080,10 @@ class PlayState extends MusicBeatState
 					set.screenCenter();
 					set.antialiasing = antialias;
 					add(set);
-					countDownSprites.push(set);
 					FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
 						ease: FlxEase.cubeInOut,
 						onComplete: function(twn:FlxTween)
 						{
-							countDownSprites.remove(set);
 							remove(set);
 							set.destroy();
 						}
@@ -1108,12 +1101,10 @@ class PlayState extends MusicBeatState
 					go.screenCenter();
 					go.antialiasing = antialias;
 					add(go);
-					countDownSprites.push(go);
 					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
 						ease: FlxEase.cubeInOut,
 						onComplete: function(twn:FlxTween)
 						{
-							countDownSprites.remove(go);
 							remove(go);
 							go.destroy();
 						}
